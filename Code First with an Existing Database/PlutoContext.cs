@@ -13,7 +13,7 @@ namespace Code_First_with_an_Existing_Database
         }
 
         public virtual DbSet<Author> Authors { get; set; }
-        public virtual DbSet<Cours> Courses { get; set; }
+        public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -23,7 +23,7 @@ namespace Code_First_with_an_Existing_Database
                 .WithOptional(e => e.Author)
                 .HasForeignKey(e => e.Author_Id);
 
-            modelBuilder.Entity<Cours>()
+            modelBuilder.Entity<Course>()
                 .HasMany(e => e.Tags)
                 .WithMany(e => e.Courses)
                 .Map(m => m.ToTable("TagCourses").MapLeftKey("Course_Id"));

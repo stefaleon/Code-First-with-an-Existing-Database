@@ -11,6 +11,10 @@
 * In the Entity Data Model Wizard select Code First from database.
 * Select a new connection in order to specify the connection string in the next steps.
 * Fill in the database server name, it is .\SQLEXPRESS in my case.
-* Select the existing PlutoCodeFirst (created in the previous exercise).
+* Select the existing PlutoCodeFirst database (created in the previous exercise).
 * The wizard will create a connection string in App.config named PlutoConfig, same as our DbContext.
 * Select all tables except \_MigrationHistory and finish.
+
+&nbsp;
+## 02 Rename Cours to Course
+* In the code created, use VS Rename functionality to correct the badly singuralised Cours to Course.

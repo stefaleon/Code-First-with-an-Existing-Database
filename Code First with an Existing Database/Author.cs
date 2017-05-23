@@ -11,7 +11,7 @@ namespace Code_First_with_an_Existing_Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Author()
         {
-            Courses = new HashSet<Cours>();
+            Courses = new HashSet<Course>();
         }
 
         public int Id { get; set; }
@@ -19,6 +19,6 @@ namespace Code_First_with_an_Existing_Database
         public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cours> Courses { get; set; }
+        public virtual ICollection<Course> Courses { get; set; }
     }
 }
