@@ -4,3 +4,13 @@
 &nbsp;
 ## 00 Start the project
 * In VS, create a Console Application project.
+
+&nbsp;
+## 01 Create a Code First project using an existing Database
+* Add a new item by selecting an ADO.NET Entity Data Model and naming it PlutoContext.
+* In the Entity Data Model Wizard select Code First from database.
+* Select a new connection in order to specify the connection string in the next steps.
+* Fill in the database server name, it is .\SQLEXPRESS in my case.
+* Select the existing PlutoCodeFirst (created in the previous exercise).
+* The wizard will create a connection string in App.config named PlutoConfig, same as our DbContext.
+* Select all tables except \_MigrationHistory and finish.
