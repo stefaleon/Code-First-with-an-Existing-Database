@@ -58,4 +58,25 @@ Specify the '-Verbose' flag to view the SQL statements being applied to the targ
 Applying explicit migrations: [201705241525326_InitialModel].
 Applying explicit migration: 201705241525326_InitialModel.
 Running Seed method.
-``` 
+```
+
+&nbsp;
+## 07 Add a new class
+* We now may start making changes to the model. We will add a class named Category.
+```
+public class Category
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+```
+* Before we add the migration, we need to update our DbContext. So in PlutoContext we will add the Categories DbSet.
+```
+public virtual DbSet<Category> Categories { get; set; }
+```
+* Add the migration.
+```
+PM> add-migration AddCategoriesTable
+Scaffolding migration 'AddCategoriesTable'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration AddCategoriesTable' again.
+```
