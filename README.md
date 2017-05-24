@@ -37,3 +37,13 @@ Scaffolding migration 'InitialModel'.
 The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration InitialModel' again.
 ```
 * The migration added contains code that will try to create tables that already exist because we started with an existing database. This will create an exception if we try to run the migration. To avoid this we need to add the migration using the -IgnoreChanges switch.
+
+
+&nbsp;
+## 05 Add the InitialModel migration (-IgnoreChanges)
+* Now we will add the migration again using the -IgnoreChanges switch, as well as the -Force switch in order to have the InitialModel migration recreated.
+```
+PM> add-migration InitialModel -IgnoreChanges -Force
+Re-scaffolding migration 'InitialModel'.
+```
+This resulted to the creation of an empty migration.
