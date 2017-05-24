@@ -47,3 +47,15 @@ PM> add-migration InitialModel -IgnoreChanges -Force
 Re-scaffolding migration 'InitialModel'.
 ```
 This resulted to the creation of an empty migration.
+
+
+&nbsp;
+## 06 Run the migration
+* We can only have one pending migration at a time. So, before making any changes to the model, we must run this empty migration on the database, so that Entity Framework will be able to keep track of the changes.
+```
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201705241525326_InitialModel].
+Applying explicit migration: 201705241525326_InitialModel.
+Running Seed method.
+``` 
