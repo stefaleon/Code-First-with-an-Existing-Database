@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Author.cs" />
     <Compile Include="Cours.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlutoContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

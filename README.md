@@ -18,3 +18,12 @@
 &nbsp;
 ## 02 Rename Cours to Course
 * In the code created, use VS Rename functionality to correct the badly singuralised Cours to Course.
+
+&nbsp;
+## 03 Enable migrations
+* In Package Manager Console, enable migrations.
+```
+PM> enable-migrations
+Checking if the context targets an existing database...
+Code First Migrations enabled for project Code First with an Existing Database.
+```
