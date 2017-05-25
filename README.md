@@ -80,3 +80,24 @@ PM> add-migration AddCategoriesTable
 Scaffolding migration 'AddCategoriesTable'.
 The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration AddCategoriesTable' again.
 ```
+
+&nbsp;
+## 08 Use the Sql() method to populate the Categories table
+* The AddCategoriesTable migration will try to create the Categories table in the database. We can use the Sql() method to polulate new tables with some data. In the migration code we first set the identity for Id to false:
+```
+Id = c.Int(nullable: false, identity: false)
+```
+* Then we use the Sql() method to add data for Ids and Names.
+```
+Sql("INSERT INTO Categories VALUES (1, 'Web Development')");
+Sql("INSERT INTO Categories VALUES (2, 'Programming Languages')");
+Sql("INSERT INTO Categories VALUES (3, 'Frameworks')");
+```
+* Then we can run the migration and the Categories table and its data can be seen in MSSMS.
+```
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201705241620382_AddCategoriesTable].
+Applying explicit migration: 201705241620382_AddCategoriesTable.
+Running Seed method.
+```
