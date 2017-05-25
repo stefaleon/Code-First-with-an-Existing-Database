@@ -7,13 +7,15 @@ namespace Code_First_with_an_Existing_Database.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.Courses", "Name", c => c.String());
+            AddColumn("dbo.Courses", "Name", c => c.String(nullable: false));
+            Sql("UPDATE Courses SET Name = Title");
             DropColumn("dbo.Courses", "Title");
         }
         
         public override void Down()
         {
-            AddColumn("dbo.Courses", "Title", c => c.String());
+            AddColumn("dbo.Courses", "Title", c => c.String(nullable: false));
+            Sql("UPDATE Courses SET Title = Name");
             DropColumn("dbo.Courses", "Name");
         }
     }

@@ -163,3 +163,44 @@ PM> add-migration RenameTitleToNameInCoursesTable
 Scaffolding migration 'RenameTitleToNameInCoursesTable'.
 The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration RenameTitleToNameInCoursesTable' again.
 ```
+
+&nbsp;
+## 13 DANGER! Don't drop before setting the data
+* This migration is very dangerous because it drops the Title column without setting its data to Name. We must be very careful and fix this before running the migration.
+* First set the Name to not nullable, because it doesn't make sense to have a Course without a name.
+```
+AddColumn("dbo.Courses", "Name", c => c.String(nullable: false));
+```
+* In order to pass the Title data to Name, we cane use either RenameColumn() and get rid of AddColumn() and DropColumn()...
+```
+public override void Up()
+        {
+            RenameColumn("dbo.Courses", "Title", "Name");
+        }
+```
+... or use the Sql() method to populate Name before dropping Title:
+```
+public override void Up()
+        {
+            AddColumn("dbo.Courses", "Name", c => c.String(nullable: false));
+            Sql("UPDATE Courses SET Name = Title");
+            DropColumn("dbo.Courses", "Title");
+        }
+```
+* Make sure that when changes are applied to upgrading code (Up()), the equivalent happens to downgrading code (Down()).
+```
+public override void Down()
+        {
+            AddColumn("dbo.Courses", "Title", c => c.String(nullable: false));
+            Sql("UPDATE Courses SET Title = Name");
+            DropColumn("dbo.Courses", "Name");
+        }
+```
+* Now we can run the migration and see the Name column in the Courses table in MSSMS.
+```
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201705250841280_RenameTitleToNameInCoursesTable].
+Applying explicit migration: 201705250841280_RenameTitleToNameInCoursesTable.
+Running Seed method.
+```
