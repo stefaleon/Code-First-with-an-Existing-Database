@@ -101,3 +101,16 @@ Applying explicit migrations: [201705241620382_AddCategoriesTable].
 Applying explicit migration: 201705241620382_AddCategoriesTable.
 Running Seed method.
 ```
+
+&nbsp;
+## 09 Add the Category property to the Course class
+* In the Course class, we can create a Category property and name it Category.
+```
+public Category Category { get; set; }
+```
+* Then add the relevant migration.
+```
+PM> add-migration AddCategoryColumnToCoursesTable
+Scaffolding migration 'AddCategoryColumnToCoursesTable'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration AddCategoryColumnToCoursesTable' again.
+```
