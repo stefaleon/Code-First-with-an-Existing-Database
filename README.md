@@ -204,3 +204,21 @@ Applying explicit migrations: [201705250841280_RenameTitleToNameInCoursesTable].
 Applying explicit migration: 201705250841280_RenameTitleToNameInCoursesTable.
 Running Seed method.
 ```
+
+&nbsp;
+## 14 Delete a property in the Course class
+* In the Course class, we will delete the DatePublished property.
+* Then add the relevant migration.
+```
+PM> add-migration DeleteDatePublishedColumnFromCoursesTable
+Scaffolding migration 'DeleteDatePublishedColumnFromCoursesTable'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration DeleteDatePublishedColumnFromCoursesTable' again.
+```
+* And run it.
+```
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201705250916462_DeleteDatePublishedColumnFromCoursesTable].
+Applying explicit migration: 201705250916462_DeleteDatePublishedColumnFromCoursesTable.
+Running Seed method.
+```
