@@ -150,3 +150,16 @@ Applying explicit migrations: [201705250829269_AddDatPublishedColumnToCoursesTab
 Applying explicit migration: 201705250829269_AddDatPublishedColumnToCoursesTable.
 Running Seed method.
 ```
+
+&nbsp;
+## 12 Rename a property in the Course class
+* In the Course class, we will rename the Title property to Name, using the renaming functionality of VS in order to update all references.
+```
+public string Name { get; set; }
+```
+* Then add the relevant migration.
+```
+PM> add-migration RenameTitleToNameInCoursesTable
+Scaffolding migration 'RenameTitleToNameInCoursesTable'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration RenameTitleToNameInCoursesTable' again.
+```
