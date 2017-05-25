@@ -222,3 +222,28 @@ Applying explicit migrations: [201705250916462_DeleteDatePublishedColumnFromCour
 Applying explicit migration: 201705250916462_DeleteDatePublishedColumnFromCoursesTable.
 Running Seed method.
 ```
+
+&nbsp;
+## 15 Delete a class
+* We are going to delete the Category class. First let's remove the Category property from the Course class.
+* Then add this migration.
+```
+PM> add-migration DeleteCategoryColumnFromCoursesTable
+Scaffolding migration 'DeleteCategoryColumnFromCoursesTable'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration DeleteCategoryColumnFromCoursesTable' again.
+```
+* And then run it.
+```
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201705252052592_DeleteCategoryColumnFromCoursesTable].
+Applying explicit migration: 201705252052592_DeleteCategoryColumnFromCoursesTable.
+Running Seed method.
+```
+* Next we can delete the Category.cs class as well as the Category DbSet in PlutoContext.
+* Then add the relevant migration.
+```
+PM> add-migration DeleteCategoriesTable
+Scaffolding migration 'DeleteCategoriesTable'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration DeleteCategoriesTable' again.
+```
