@@ -23,6 +23,8 @@ namespace Code_First_with_an_Existing_Database
 
         public Category Category { get; set; }
 
+        public DateTime? DatePublished { get; set; }
+
         public int Level { get; set; }
 
         public float FullPrice { get; set; }

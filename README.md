@@ -129,3 +129,24 @@ Applying explicit migrations: [201705250754528_AddCategoryColumnToCoursesTable].
 Applying explicit migration: 201705250754528_AddCategoryColumnToCoursesTable.
 Running Seed method.
 ```
+
+&nbsp;
+## 11 Add another property to the Course class
+* In the Course class, we can create a DateTime property and name it DatePublished. We add the question mark after the type in order to ake it nullable.
+```
+public DateTime? DatePublished { get; set; }
+```
+* Then add the relevant migration.
+```
+PM> add-migration AddDatPublishedColumnToCoursesTable
+Scaffolding migration 'AddDatPublishedColumnToCoursesTable'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration AddDatPublishedColumnToCoursesTable' again.
+```
+* Then we can run the migration and see the nullable DatePublished column in the Courses table in MSSMS.
+```
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201705250829269_AddDatPublishedColumnToCoursesTable].
+Applying explicit migration: 201705250829269_AddDatPublishedColumnToCoursesTable.
+Running Seed method.
+```
