@@ -114,3 +114,18 @@ PM> add-migration AddCategoryColumnToCoursesTable
 Scaffolding migration 'AddCategoryColumnToCoursesTable'.
 The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration AddCategoryColumnToCoursesTable' again.
 ```
+
+&nbsp;
+## 10 Use the Sql() method to assign a Category
+* Now we can use the Sql() method to populate the Category for existing courses. For instance, we can assign all courses to Web Development by adding the following line in the migration code:
+```
+Sql("UPDATE Courses SET Category_Id = 1");
+```
+* Then we can run the migration and see the results on Courses in MSSMS.
+```
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201705250754528_AddCategoryColumnToCoursesTable].
+Applying explicit migration: 201705250754528_AddCategoryColumnToCoursesTable.
+Running Seed method.
+```
