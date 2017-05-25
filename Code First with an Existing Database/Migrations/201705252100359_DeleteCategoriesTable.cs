@@ -7,6 +7,17 @@ namespace Code_First_with_an_Existing_Database.Migrations
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo._Categories",
+                c => new
+                {
+                    Id = c.Int(nullable: false, identity: true),
+                    Name = c.String(),
+                })
+                .PrimaryKey(t => t.Id);
+
+            Sql("INSERT INTO _Categories (Name) SELECT Name FROM Categories");
+
             DropTable("dbo.Categories");
         }
         
@@ -20,7 +31,11 @@ namespace Code_First_with_an_Existing_Database.Migrations
                         Name = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
-            
+
+            Sql("INSERT INTO Categories (Name) SELECT Name FROM _Categories");
+
+            DropTable("dbo._Categories");
+
         }
     }
 }

@@ -247,3 +247,38 @@ PM> add-migration DeleteCategoriesTable
 Scaffolding migration 'DeleteCategoriesTable'.
 The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration DeleteCategoriesTable' again.
 ```
+
+&nbsp;
+## 16 Maintain the data of the deleted class
+* Before dropping the table from the database, we can copy the data to another table in order to keep the data for historical reasons. So we can create the table dbo.\_Categories and copy the data from Categories to it.
+```
+public override void Up()
+        {
+            CreateTable(
+                "dbo._Categories",
+                c => new
+                {
+                    Id = c.Int(nullable: false, identity: true),
+                    Name = c.String(),
+                })
+                .PrimaryKey(t => t.Id);
+
+            Sql("INSERT INTO _Categories (Name) SELECT Name FROM Categories");
+
+            DropTable("dbo.Categories");
+        }
+```
+* Take care of the Down() method as well.
+```
+            Sql("INSERT INTO Categories (Name) SELECT Name FROM _Categories");
+
+            DropTable("dbo._Categories");
+```
+* Now we can run the migration and then see the Categories table gone and replaced by the \_Categories table in MSSMS.
+```
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201705252100359_DeleteCategoriesTable].
+Applying explicit migration: 201705252100359_DeleteCategoriesTable.
+Running Seed method.
+```
