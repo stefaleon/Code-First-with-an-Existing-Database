@@ -295,3 +295,15 @@ Reverting explicit migration: 201705252100359_DeleteCategoriesTable.
 Reverting explicit migration: 201705252052592_DeleteCategoryColumnFromCoursesTable.
 ```
 * Now the database is in the same state it was right after the TargetMigration. We can check out to the relative code version and do the work we need.
+
+&nbsp;
+## 18 Revert to latest state
+* If we want to revert to the latest database state, we can check out to the latest code version and apply the in-between migrations with update-database.
+```
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201705252052592_DeleteCategoryColumnFromCoursesTable, 201705252100359_DeleteCategoriesTable].
+Applying explicit migration: 201705252052592_DeleteCategoryColumnFromCoursesTable.
+Applying explicit migration: 201705252100359_DeleteCategoriesTable.
+Running Seed method.
+```
