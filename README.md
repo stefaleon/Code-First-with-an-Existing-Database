@@ -282,3 +282,16 @@ Applying explicit migrations: [201705252100359_DeleteCategoriesTable].
 Applying explicit migration: 201705252100359_DeleteCategoriesTable.
 Running Seed method.
 ```
+
+&nbsp;
+## 17 Revert to previous state - downgrade the database
+* We can checkout to an older version and use a new database by changing the name in the connection string.
+* If we need to use the existing database, for instance in order to maintain production data, we can run a migration with targeting to a previous state.
+```
+PM> update-database -TargetMigration:DeleteDatePublishedColumnFromCoursesTable
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Reverting migrations: [201705252100359_DeleteCategoriesTable, 201705252052592_DeleteCategoryColumnFromCoursesTable].
+Reverting explicit migration: 201705252100359_DeleteCategoriesTable.
+Reverting explicit migration: 201705252052592_DeleteCategoryColumnFromCoursesTable.
+```
+* Now the database is in the same state it was right after the TargetMigration. We can check out to the relative code version and do the work we need.
